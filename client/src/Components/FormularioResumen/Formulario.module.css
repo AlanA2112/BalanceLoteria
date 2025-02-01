@@ -1,0 +1,80 @@
+#formContainer {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    font-family: "Saira", serif;
+}
+
+#inputContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#symbol {
+    width: 15rem;
+    height: 3rem;
+    border-radius: 0.7rem;
+    background-color: var(--gris-oscuro);
+    color: var(--gris-claro);
+    font-family: "Saira", serif;
+    display: flex;
+    flex-direction: row;
+}
+
+#input {
+    /* Para WebKit (Chrome, Safari, Edge) */
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    all: unset;
+    height: 3rem;
+    width: 90%;
+    font-size: 1.2rem;
+    /* background-color: aqua; */
+}
+
+#input::-webkit-inner-spin-button,
+#input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+#labelInside {
+    /* background-color: blueviolet; */
+    color: var(--gris);
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+#label {
+    /* background-color: blueviolet; */
+    text-align: left;
+    color: var(--gris)
+}
+
+#labelBoton {
+    /* background-color: blueviolet; */
+    text-align: left;
+    color: var(--negro-fondo);
+    user-select: none;
+}
+
+#sendButton {
+    all: unset;
+    width: 15rem;
+    height: 3rem;
+    border-radius: 0.7rem;
+    background-color: var(--gris-oscuro);
+    color: var(--gris-claro);
+    border-color: var(--celeste);
+    border-width: 1px;
+    border-style: solid;
+    font-family: "Saira", serif;
+    font-size: 1.2rem;
+}
