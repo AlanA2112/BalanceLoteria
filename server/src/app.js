@@ -11,17 +11,25 @@ const server = express();
 
 server.name = 'API';
 
-server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
-server.use(bodyParser.json({ limit: '50mb' }));
-server.use(cookieParser());
-server.use(morgan('dev'));
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://otra-ip-o-dominio.com'
+];
+
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://balance-loteria.vercel.app'); // update to match the domain you will make the request from
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+
   next();
 });
+
 
 server.use(
   cookieSession({
