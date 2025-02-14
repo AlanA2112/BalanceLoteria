@@ -15,31 +15,6 @@ export default function Banner() {
         return () => clearInterval(interval);
     }, []);
 
-    useEffect(() => {
-        const checkTime = () => {
-            const now = new Date();
-            const hour = now.getHours();
-            const minutes = now.getMinutes();
-
-            // Verificar y navegar según la hora
-            if (hour === 10 && minutes === 15) {
-                navigate('/previa');
-            } else if (hour === 12 && minutes === 0) {
-                navigate('/primera');
-            } else if (hour === 15 && minutes === 0) {
-                navigate('/matutina');
-            } else if (hour === 18 && minutes === 0) {
-                navigate('/vespertina');
-            } else if (hour === 21 && minutes === 0) {
-                navigate('/nocturna');
-            }
-        };
-
-        const interval = setInterval(checkTime, 1000); // Verificar cada segundo
-
-        return () => clearInterval(interval); // Limpiar al desmontar
-    }, [navigate]);
-
     return (
         <div id={styles.bannerSuperior}>
             <div id={styles.logoContainer} onClick={(e) => { navigate("/"); }}>

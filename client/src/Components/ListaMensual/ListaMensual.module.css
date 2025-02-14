@@ -1,0 +1,173 @@
+#lista {
+    background-color: var(--gris-oscuro);
+    color: var(--gris-claro);
+    width: 30%;
+    border-radius: 0.7rem;
+    font-family: "Saira", serif;
+    margin-top: 2rem;
+    padding-bottom: 1.5rem;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#listaResumen {
+    background-color: var(--gris-oscuro);
+    color: var(--gris-claro);
+    border-radius: 0.7rem;
+    font-family: "Saira", serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#item {
+    width: 100%;
+    border-bottom: 1px var(--gris) solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#itemFecha {
+    /* background-color: red; */
+    width: 33.3%;
+}
+
+#fecha {
+    width: 30%;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: row;
+}
+
+#ventasComision {
+    width: 60%;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#itemComision {
+    width: 30%;
+    text-align: left;
+}
+
+#delete {
+    color: var(--gris);
+    cursor: pointer;
+    font-weight: bolder;
+    user-select: none;
+}
+
+#delete:hover {
+    color: rgb(225, 60, 60);
+}
+
+#itemFechaTitle {
+    color: var(--gris);
+    width: 80%;
+    user-select: none;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+#itemComisionTitle {
+    color: var(--gris);
+    width: 50%;
+    user-select: none;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+#itemVentasTitle {
+    color: var(--gris);
+    width: 30%;
+    user-select: none;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.headerTitle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    /* Espacio entre el texto y el icono */
+}
+
+/*////////////////////////////////////////// BOTONES    y    SELECTOR /////////////////////////////////////*/
+
+#header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.dateSelector {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: var(--gris);
+    transition: 0.25s;
+}
+
+.dateSelector select {
+    color: var(--gris);
+    background-color: var(--gris-oscuro);
+    border: 1px solid var(--gris-oscuro);
+    border-radius: 0.5rem;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Cambio de color al pasar el cursor */
+.dateSelector select:hover {
+    border: 1px solid var(--celeste);
+}
+
+/* Estilo al hacer clic */
+.dateSelector select:focus {
+    /* border-color: #007bff; */
+}
+
+/* Personalizar las flechas del select en algunos navegadores */
+.dateSelector select::-ms-expand {
+    display: none;
+}
+
+/* Estilo para los botones de cambio de mes */
+#header button {
+    all: unset;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.7rem;
+    background-color: var(--gris-oscuro);
+    color: var(--gris);
+    font-family: "Saira", serif;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-style: solid;
+    border-color: var(--gris-oscuro);
+    border-width: 1px;
+    transition: 0.25s;
+}
+
+#header button:hover {
+    background-color: var(--gris-oscuro);
+    border: 1px solid var(--celeste);
+}
+
+#header button:disabled {
+    background-color: var(--gris-oscuro);
+    cursor: not-allowed;
+}

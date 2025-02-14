@@ -1,0 +1,48 @@
+#graficoContainer{
+    width: 65%;
+    background-color: var(--gris-oscuro);
+    color: var(--gris-claro);
+    margin-top: 2rem;
+    border-radius: 0.7rem;
+    font-family: "Saira", serif;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--celeste);
+}
+
+.dateSelector {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 1rem;
+    color: var(--gris);
+    transition: 0.25s;
+}
+
+.dateSelector select {
+    color: var(--gris);
+    background-color: var(--gris-oscuro);
+    border: 1px solid var(--gris-oscuro);
+    border-radius: 0.5rem;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Cambio de color al pasar el cursor */
+.dateSelector select:hover {
+    border: 1px solid var(--celeste);
+}
+
+/* Estilo al hacer clic */
+.dateSelector select:focus {
+    /* border-color: #007bff; */
+}
+
+/* Personalizar las flechas del select en algunos navegadores */
+.dateSelector select::-ms-expand {
+    display: none;
+}

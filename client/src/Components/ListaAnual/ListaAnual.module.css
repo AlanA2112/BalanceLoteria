@@ -1,0 +1,94 @@
+#lista {
+    background-color: var(--gris-oscuro);
+    color: var(--gris-claro);
+    width: 30%;
+    border-radius: 0.7rem;
+    font-family: "Saira", serif;
+    margin-top: 2rem;
+    padding-bottom: 1.5rem;
+    padding-top: 1rem;
+}
+
+
+#listaResumen {
+    background-color: var(--gris-oscuro);
+    color: var(--gris-claro);
+    border-radius: 0.7rem;
+    font-family: "Saira", serif;
+}
+
+#item {
+    width: 100%;
+    border-bottom: 1px var(--gris) solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#itemFecha {
+    /* background-color: red; */
+    width: 50%;
+}
+
+#fecha {
+    width: 20%;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: row;
+}
+
+#ventasComision {
+    width: 70%;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#itemComision {
+    width: 30%;
+    text-align: left;
+}
+
+#delete {
+    color: var(--gris);
+    cursor: pointer;
+    font-weight: bolder;
+    user-select: none;
+}
+
+#delete:hover {
+    color: rgb(225, 60, 60);
+}
+
+#itemFechaTitle {
+    color: var(--gris);
+    width: 80%;
+    user-select: none;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+#itemComisionTitle {
+    color: var(--gris);
+    width: 50%;
+    user-select: none;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+#itemVentasTitle {
+    color: var(--gris);
+    width: 30%;
+    user-select: none;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.headerTitle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    /* Espacio entre el texto y el icono */
+}

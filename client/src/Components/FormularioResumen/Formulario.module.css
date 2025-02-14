@@ -72,9 +72,17 @@
     border-radius: 0.7rem;
     background-color: var(--gris-oscuro);
     color: var(--gris-claro);
-    border-color: var(--celeste);
-    border-width: 1px;
-    border-style: solid;
     font-family: "Saira", serif;
     font-size: 1.2rem;
+    cursor: pointer;
+    border-style: solid;
+    border-color: var(--gris-oscuro);
+    border-width: 1px;
+    transition: 0.25s;
+}
+
+#sendButton:hover{
+    border-style: solid;
+    border-color: var(--celeste);
+    border-width: 1px;
 }

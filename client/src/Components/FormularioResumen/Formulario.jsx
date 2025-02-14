@@ -1,7 +1,10 @@
 import { useState, useRef } from "react";
 import styles from "./Formulario.module.css";
+import { useDispatch } from "react-redux";
+import { addResumen, getAll } from "../../redux/actions/actions";
 
 export default function Formulario() {
+    const dispatch = useDispatch()
     const [form, setForm] = useState({ dia: "", mes: "", anio: "", comision: "", ventas: "" });
 
     // Referencias para los inputs
@@ -28,7 +31,7 @@ export default function Formulario() {
         }
 
         // Formatea el valor numérico con puntos de miles para ventas y comisiones
-        value = Number(value).toLocaleString("es-ES");
+        value = Number(value).toLocaleString();
         setForm({ ...form, [e.target.name]: value });
     }
 
@@ -41,8 +44,11 @@ export default function Formulario() {
             comision: cleanNumber(form.comision),  // Convertir comisión a número
             ventas: cleanNumber(form.ventas),  // Convertir ventas a número
         };
-    
-        alert(JSON.stringify(dataToSend)); // Mostrar los datos convertidos
+
+        // alert(JSON.stringify(dataToSend)); // Mostrar los datos convertidos
+        dispatch(addResumen(dataToSend));
+
+        setForm({ dia: "", mes: "", anio: "", comision: "", ventas: "" });
     }
 
     function cleanNumber(value) {

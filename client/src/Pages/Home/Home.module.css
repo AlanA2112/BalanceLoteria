@@ -50,3 +50,11 @@
     border-bottom:#0a55a3 solid 6px;
     cursor: pointer;
 }
+
+#informacion{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    background-color: var(--negro-fondo);
+}

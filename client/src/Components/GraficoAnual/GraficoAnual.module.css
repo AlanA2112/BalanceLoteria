@@ -1,0 +1,12 @@
+#graficoContainer{
+    width: 65%;
+    background-color: var(--gris-oscuro);
+    color: var(--gris-claro);
+    margin-top: 2rem;
+    border-radius: 0.7rem;
+    font-family: "Saira", serif;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--celeste);
+}
