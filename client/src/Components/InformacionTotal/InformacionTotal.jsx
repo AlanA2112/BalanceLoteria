@@ -4,6 +4,7 @@ import GraficoAnual from "../GraficoAnual/GraficoAnual";
 import GraficoAnualLinea from "../GraficoAnualLinea/GraficoAnualLinea";
 import Grafico from "../Grafico/Grafico";
 import Lista from "../Lista/Lista";
+import styles from "./Informacion.module.css";
 
 export default function InformacionTotal({ lista }) {
     const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
@@ -30,10 +31,13 @@ export default function InformacionTotal({ lista }) {
 
 
     return (
-        <>
-            <Grafico data={sortedList} />
-            <Lista sortedList={sortedList} handleSort={handleSort} sortConfig={sortConfig} />
-            {/* <GraficoAnual data={listaAnual} /> */}
-        </>
+        <div id={styles.container}>
+            <div id={styles.titleContainer}>Informacion Historica</div>
+            <div id={styles.mainInfo}>
+                <Grafico data={sortedList} />
+                <Lista sortedList={sortedList} handleSort={handleSort} sortConfig={sortConfig} />
+                {/* <GraficoAnual data={listaAnual} /> */}
+            </div>
+        </div>
     );
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ListaAnual from "../ListaAnual/ListaAnual";
 import GraficoAnual from "../GraficoAnual/GraficoAnual";
 import GraficoAnualLinea from "../GraficoAnualLinea/GraficoAnualLinea";
+import styles from "./Informacion.module.css";
 
 export default function InformacionAnual({ lista }) {
     const [listaAnual, setListaAnual] = useState([]);
@@ -51,10 +52,13 @@ export default function InformacionAnual({ lista }) {
     }, [lista]);
 
     return (
-        <>
-            <GraficoAnualLinea data={listaAnual} />
-            <ListaAnual lista={listaAnual} />
-            {/* <GraficoAnual data={listaAnual} /> */}
-        </>
+        <div id={styles.container}>
+            <div id={styles.titleContainer}>Informacion Anual</div>
+            <div id={styles.mainInfo}>
+                <GraficoAnualLinea data={listaAnual} />
+                <ListaAnual lista={listaAnual} />
+                {/* <GraficoAnual data={listaAnual} /> */}
+            </div>
+        </div>
     );
 }

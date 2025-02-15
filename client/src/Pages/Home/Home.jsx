@@ -12,6 +12,7 @@ import ListaAnual from "../../Components/ListaAnual/ListaAnual";
 import InformacionAnual from "../../Components/InformacionAnual/InformacionAnual";
 import InformacionMensual from "../../Components/InformacionMensual/InformacionMensual";
 import InformacionTotal from "../../Components/InformacionTotal/InformacionTotal";
+import InformacionSemanal from "../../Components/InformacionSemanal/InformacionSemanal";
 
 export default function Home() {
     const navigate = useNavigate();
@@ -31,6 +32,9 @@ export default function Home() {
             </div>
             <div id={styles.informacion}>
                 <InformacionAnual lista={lista} />
+            </div>
+            <div id={styles.informacion}>
+                <InformacionSemanal lista={lista} />
             </div>
             <div id={styles.informacion}>
                 <InformacionTotal lista={lista} />

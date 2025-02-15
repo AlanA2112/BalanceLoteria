@@ -37,14 +37,16 @@
 }
 
 #fecha {
-    width: 30%;
+    width: 25%;
     /* background-color: aqua; */
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
 #ventasComision {
-    width: 60%;
+    width: 70%;
     /* background-color: aqua; */
     display: flex;
     flex-direction: row;
@@ -86,7 +88,7 @@
 
 #itemVentasTitle {
     color: var(--gris);
-    width: 30%;
+    width: 40%;
     user-select: none;
     cursor: pointer;
     margin-left: 1rem;

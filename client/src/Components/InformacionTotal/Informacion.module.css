@@ -1,0 +1,32 @@
+#container {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    align-items: center;
+    gap: 1rem;
+}
+
+#mainInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+#titleContainer {
+    width: 100%;
+    height: 3rem;
+    background-color: var(--gris-oscuro);
+    color: var(--gris-claro);
+    margin-top: 1rem;
+    border-radius: 0.7rem;
+    font-family: "Saira", serif;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

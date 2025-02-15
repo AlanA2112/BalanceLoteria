@@ -1,8 +1,8 @@
 #graficoContainer{
-    width: 65%;
+    width: 70%;
     background-color: var(--gris-oscuro);
     color: var(--gris-claro);
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     border-radius: 0.7rem;
     font-family: "Saira", serif;
 }

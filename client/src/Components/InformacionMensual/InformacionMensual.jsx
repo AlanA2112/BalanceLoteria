@@ -2,6 +2,7 @@ import { useState } from "react";
 import GraficoMensual from "../GraficoMensual/GraficoMensual";
 import ListaAnual from "../ListaAnual/ListaAnual";
 import ListaMensual from "../ListaMensual/ListaMensual";
+import styles from "./Informacion.module.css";
 
 export default function InformacionMensual({ lista }) {
 
@@ -73,14 +74,17 @@ export default function InformacionMensual({ lista }) {
 
 
     return (
-        <>
-            <ListaMensual lista={lista} monthNames={monthNames} handleSort={handleSort}
-                handleSelectYear={handleSelectYear} handleSelectMonth={handleSelectMonth} handleNextMonth={handleNextMonth}
-                handlePrevMonth={handlePrevMonth} availableYears={availableYears} sortedList={sortedList}
-                currentIndex={currentIndex} currentKey={currentKey} groupedByMonth={groupedByMonth}
-                sortConfig={sortConfig} sortedKeys={sortedKeys} year={year} month={month}
-            />
-            <GraficoMensual data={groupedByMonth[currentKey] || []} />
-        </>
+        <div id={styles.container}>
+            <div id={styles.titleContainer}>Informacion Mensual</div>
+            <div id={styles.mainInfo}>
+                <ListaMensual lista={lista} monthNames={monthNames} handleSort={handleSort}
+                    handleSelectYear={handleSelectYear} handleSelectMonth={handleSelectMonth} handleNextMonth={handleNextMonth}
+                    handlePrevMonth={handlePrevMonth} availableYears={availableYears} sortedList={sortedList}
+                    currentIndex={currentIndex} currentKey={currentKey} groupedByMonth={groupedByMonth}
+                    sortConfig={sortConfig} sortedKeys={sortedKeys} year={year} month={month}
+                />
+                <GraficoMensual data={groupedByMonth[currentKey] || []} />
+            </div>
+        </div>
     )
 }
