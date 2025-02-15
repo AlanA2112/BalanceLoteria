@@ -13,7 +13,7 @@ server.name = 'API';
 
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://otra-ip-o-dominio.com'
+  'https://balance-loteria.vercel.app'
 ];
 
 server.use((req, res, next) => {
