@@ -30,11 +30,14 @@ server.use((req, res, next) => {
   next();
 });
 
+// 🔹 Agregar estos middlewares antes de las rutas
+server.use(express.json());  // ✅ Para procesar JSON
+server.use(express.urlencoded({ extended: true }));  // ✅ Para procesar formularios
 
 server.use(
   cookieSession({
     name: "FOOD-API",
-    secret: process.env.COOKIE_SECRET, // Crear variable
+    secret: process.env.COOKIE_SECRET,
     httpOnly: true,
     sameSite: "none",
     secure: true
@@ -43,8 +46,8 @@ server.use(
 
 server.use('/', routes);
 
-// Error catching endware.
-server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+// Error catching middleware
+server.use((err, req, res, next) => {
   const status = err.status || 500;
   const message = err.message || err;
   console.error(err);
