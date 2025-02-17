@@ -4,6 +4,7 @@ const router = Router();
 
 router.post('/add', async (req, res) => {
     try {
+        console.log(req.body);
         const { dia, mes, anio, ventas, comision } = req.body;
 
         if (!dia || !mes || !anio || !ventas || !comision) {
