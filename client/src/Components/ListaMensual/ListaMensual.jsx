@@ -1,10 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ItemLista from "../ItemLista/ItemLista";
 import styles from "./ListaMensual.module.css";
 
-export default function ListaMensual({ lista, setGroupedList, monthNames, handleSort, handleSelectYear, handleSelectMonth,
-    handleNextMonth, handlePrevMonth, availableYears, sortedList, currentIndex, currentKey, groupedByMonth, sortConfig,
-    sortedKeys, year, month
+export default function ListaMensual({ 
+    lista, 
+    setGroupedList, 
+    monthNames, 
+    handleSort, 
+    handleSelectYear, 
+    handleSelectMonth,
+    handleNextMonth, 
+    handlePrevMonth, 
+    availableYears, 
+    sortedList, 
+    currentIndex, 
+    currentKey, 
+    groupedByMonth, 
+    sortConfig, 
+    sortedKeys, 
+    year, 
+    month 
 }) {
 
     return (
@@ -33,16 +48,28 @@ export default function ListaMensual({ lista, setGroupedList, monthNames, handle
             <div id={styles.item}>
                 <div id={styles.fecha}>
                     <span id={styles.itemFecha}></span>
-                    <span id={styles.itemFechaTitle} className={styles.headerTitle} onClick={() => handleSort('fecha')}>
+                    <span 
+                        id={styles.itemFechaTitle} 
+                        className={styles.headerTitle} 
+                        onClick={() => handleSort('fecha')}
+                    >
                         Fecha {sortConfig.key === 'fecha' && (sortConfig.direction === "asc" ? '▲' : '▼')}
                     </span>
                     <span id={styles.itemFecha}></span>
                 </div>
                 <div id={styles.ventasComision}>
-                    <span id={styles.itemVentasTitle} className={styles.headerTitle} onClick={() => handleSort('ventas')}>
+                    <span 
+                        id={styles.itemVentasTitle} 
+                        className={styles.headerTitle} 
+                        onClick={() => handleSort('ventas')}
+                    >
                         Ventas {sortConfig.key === 'ventas' && (sortConfig.direction === "asc" ? '▲' : '▼')}
                     </span>
-                    <span id={styles.itemComisionTitle} className={styles.headerTitle} onClick={() => handleSort('comision')}>
+                    <span 
+                        id={styles.itemComisionTitle} 
+                        className={styles.headerTitle} 
+                        onClick={() => handleSort('comision')}
+                    >
                         Comisión {sortConfig.key === 'comision' && (sortConfig.direction === "asc" ? '▲' : '▼')}
                     </span>
                 </div>

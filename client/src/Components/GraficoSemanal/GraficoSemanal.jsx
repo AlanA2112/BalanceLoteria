@@ -25,6 +25,13 @@ export default function GraficoSemanal({ data }) {
   // Meses en español
   const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
+  // Colores para cada mes
+  const coloresMes = [
+    "rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", 
+    "rgba(153, 102, 255, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", 
+    "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(255, 159, 64, 0.2)"
+  ];
+
   // Generar etiquetas con formato: "Semana X (Mes) - Año"
   const etiquetas = data.map((item) => {
     const mesIndex = parseInt(item.mes, 10) - 1; // Convertimos a número y ajustamos al índice (0-11)
@@ -40,8 +47,8 @@ export default function GraficoSemanal({ data }) {
     datasets.push({
       label: "Ventas",
       data: data.map((item) => item.totalVentas),
-      backgroundColor: "rgba(75, 192, 192, 0.2)",
-      borderColor: "rgba(75, 192, 192, 1)",
+      backgroundColor: data.map((item) => coloresMes[item.mes - 1] || "rgba(75, 192, 192, 0.2)"), // Asigna color por mes
+      borderColor: data.map((item) => coloresMes[item.mes - 1] || "rgba(75, 192, 192, 1)"),
       borderWidth: 2,
       fill: tipoGrafico === "lineas",
     });
@@ -51,8 +58,8 @@ export default function GraficoSemanal({ data }) {
     datasets.push({
       label: "Comisión",
       data: data.map((item) => item.totalComision),
-      backgroundColor: "rgba(153, 102, 255, 0.2)",
-      borderColor: "rgba(153, 102, 255, 1)",
+      backgroundColor: data.map((item) => coloresMes[item.mes - 1] || "rgba(153, 102, 255, 0.2)"),
+      borderColor: data.map((item) => coloresMes[item.mes - 1] || "rgba(153, 102, 255, 1)"),
       borderWidth: 2,
       fill: tipoGrafico === "lineas",
     });
@@ -68,7 +75,6 @@ export default function GraficoSemanal({ data }) {
       borderDash: [5, 5], // 🔥 Línea punteada para diferenciar
       fill: false, // No relleno
     });
-
   }
 
   const chartData = {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GraficoMensual from "../GraficoMensual/GraficoMensual";
 import ListaAnual from "../ListaAnual/ListaAnual";
 import ListaMensual from "../ListaMensual/ListaMensual";
@@ -8,20 +8,32 @@ export default function InformacionMensual({ lista }) {
 
     const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
 
+    useEffect(() => {
+        handleSort("fecha");
+    }, []);
+
     // Ordenar lista por fecha
     const sortedList = [...lista].sort((a, b) => {
         if (!sortConfig.key) return 0;
         const isAsc = sortConfig.direction === "asc" ? 1 : -1;
-
+    
         if (sortConfig.key === "fecha") {
             const dateA = new Date(a.anio, a.mes - 1, a.dia);
             const dateB = new Date(b.anio, b.mes - 1, b.dia);
-            return dateA > dateB ? isAsc : -isAsc;
+    
+            // Comparar las fechas de forma correcta (menor a mayor)
+            if (dateA < dateB) {
+                return isAsc; // Si A es menor que B, devolver "asc" o "desc"
+            } else if (dateA > dateB) {
+                return -isAsc; // Si A es mayor que B, devolver el valor opuesto
+            }
+            return 0; // Si son iguales
         }
-
-        return a[sortConfig.key] > b[sortConfig.key] ? isAsc : -isAsc;
+    
+        // Si no es "fecha", ordenar por el valor de otra clave
+        return (a[sortConfig.key] > b[sortConfig.key] ? 1 : -1) * isAsc;
     });
-
+    
     // Agrupar por mes y año
     const groupedByMonth = sortedList.reduce((acc, item) => {
         const key = `${item.anio}-${String(item.mes).padStart(2, "0")}`;
@@ -75,7 +87,7 @@ export default function InformacionMensual({ lista }) {
 
     return (
         <div id={styles.container}>
-            <div id={styles.titleContainer}>Informacion Mensual</div>
+            <div id={styles.titleContainer}>Informacion Diaria</div>
             <div id={styles.mainInfo}>
                 <ListaMensual lista={lista} monthNames={monthNames} handleSort={handleSort}
                     handleSelectYear={handleSelectYear} handleSelectMonth={handleSelectMonth} handleNextMonth={handleNextMonth}

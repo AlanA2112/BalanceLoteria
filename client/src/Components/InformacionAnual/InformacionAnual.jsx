@@ -53,7 +53,7 @@ export default function InformacionAnual({ lista }) {
 
     return (
         <div id={styles.container}>
-            <div id={styles.titleContainer}>Informacion Anual</div>
+            <div id={styles.titleContainer}>Informacion Mensual</div>
             <div id={styles.mainInfo}>
                 <GraficoAnualLinea data={listaAnual} />
                 <ListaAnual lista={listaAnual} />
