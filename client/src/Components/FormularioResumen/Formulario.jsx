@@ -31,7 +31,7 @@ export default function Formulario() {
         }
 
         // Formatea el valor numérico con puntos de miles para ventas y comisiones
-        value = Number(value).toLocaleString();
+        value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         setForm({ ...form, [e.target.name]: value });
     }
 
@@ -53,7 +53,7 @@ export default function Formulario() {
 
     function cleanNumber(value) {
         // Eliminar puntos usados como separadores de miles y convertir a número
-        const cleanedValue = value.replace(/\./g, ""); // Eliminamos los puntos
+        const cleanedValue = value.replace(/[\.,]/g, ""); // Elimina puntos y comas
         return parseInt(cleanedValue) || 0; // Convertimos a número
     }
 
