@@ -81,8 +81,19 @@
     transition: 0.25s;
 }
 
-#sendButton:hover{
+#sendButton:hover {
     border-style: solid;
     border-color: var(--celeste);
     border-width: 1px;
+}
+
+@media (max-width: 768px) {
+    #formContainer {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        align-items: center;
+        justify-content: space-evenly;
+        font-family: "Saira", serif;
+    }
 }

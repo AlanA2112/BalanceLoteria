@@ -64,3 +64,43 @@
     font-weight: bolder;
     letter-spacing: 0.15rem
 }
+
+@media (max-width: 768px) {
+    #bannerSuperior {
+        width: 100%;
+        height: 4rem;
+        background-color: var(--gris-oscuro);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    #logoContainer {
+        /* background-color: red; */
+        height: 40%;
+        display: flex;
+        /* width: 15%; */
+        margin-left: 1rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #fecha {
+        font-family: "Saira", serif;
+        font-size: 1rem;
+        color: white;
+        font-weight: bolder;
+        margin: auto;
+        letter-spacing: 0.15rem
+    }
+
+    #nombreAgencia {
+        font-family: "Saira", serif;
+        font-size: 0.8rem;
+        color: white;
+        font-weight: bolder;
+        letter-spacing: 0.15rem
+    }
+}

@@ -27,8 +27,8 @@ export default function GraficoSemanal({ data }) {
 
   // Colores para cada mes
   const coloresMes = [
-    "rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", 
-    "rgba(153, 102, 255, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", 
+    "rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)",
+    "rgba(153, 102, 255, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)",
     "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(255, 159, 64, 0.2)"
   ];
 
@@ -47,8 +47,8 @@ export default function GraficoSemanal({ data }) {
     datasets.push({
       label: "Ventas",
       data: data.map((item) => item.totalVentas),
-      backgroundColor: data.map((item) => coloresMes[item.mes - 1] || "rgba(75, 192, 192, 0.2)"), // Asigna color por mes
-      borderColor: data.map((item) => coloresMes[item.mes - 1] || "rgba(75, 192, 192, 1)"),
+      backgroundColor: data.map((item) => coloresMes[item.mes - 1] || "rgba(75, 192, 192, 0.2)"),
+      borderColor: data.map((item) => coloresMes[item.mes - 1].replace("0.2", "0.8") || "rgba(75, 192, 192, 0.8)"), // Más brillante
       borderWidth: 2,
       fill: tipoGrafico === "lineas",
     });
@@ -59,7 +59,7 @@ export default function GraficoSemanal({ data }) {
       label: "Comisión",
       data: data.map((item) => item.totalComision),
       backgroundColor: data.map((item) => coloresMes[item.mes - 1] || "rgba(153, 102, 255, 0.2)"),
-      borderColor: data.map((item) => coloresMes[item.mes - 1] || "rgba(153, 102, 255, 1)"),
+      borderColor: data.map((item) => coloresMes[item.mes - 1].replace("0.2", "0.8") || "rgba(153, 102, 255, 0.8)"), // Más brillante
       borderWidth: 2,
       fill: tipoGrafico === "lineas",
     });
@@ -69,13 +69,14 @@ export default function GraficoSemanal({ data }) {
     datasets.push({
       label: "Promedio",
       data: data.map((item) => item.promedioComision),
-      backgroundColor: "rgba(255, 206, 86, 0.3)", // Amarillo translúcido
-      borderColor: "rgba(255, 206, 86, 1)", // Amarillo sólido
+      backgroundColor: data.map((item) => coloresMes[item.mes - 1] || "rgba(153, 102, 255, 0.2)"),
+      borderColor: data.map((item) => coloresMes[item.mes - 1].replace("0.2", "0.8") || "rgba(153, 102, 255, 0.8)"), // Más brillante
       borderWidth: 2,
-      borderDash: [5, 5], // 🔥 Línea punteada para diferenciar
-      fill: false, // No relleno
+      borderDash: [5, 5],
+      fill: false,
     });
   }
+
 
   const chartData = {
     labels: etiquetas,
