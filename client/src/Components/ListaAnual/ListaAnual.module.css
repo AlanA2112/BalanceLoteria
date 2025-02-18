@@ -105,5 +105,16 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        font-size: 0.8rem;
+    }
+    
+    #listaResumen {
+        background-color: var(--gris-oscuro);
+        width: 100%;
+        color: var(--gris-claro);
+        border-radius: 0.7rem;
+        font-family: "Saira", serif;
+        /* max-height: 100%;
+        overflow: scroll; */
     }
 }

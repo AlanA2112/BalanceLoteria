@@ -33,13 +33,16 @@ export default function GraficoSemanal({ data }) {
   ];
 
   // Generar etiquetas con formato: "Semana X (Mes) - Año"
-  const etiquetas = data.map((item) => {
-    const mesIndex = parseInt(item.mes, 10) - 1; // Convertimos a número y ajustamos al índice (0-11)
-    const nombreMes = meses[mesIndex] || "Mes desconocido";
+  const mesesCortos = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
 
-    return item.semana !== undefined && item.anio !== undefined
-      ? `Semana ${item.semana} (${nombreMes}) - ${item.anio}`
-      : "Semana desconocida";
+  const etiquetas = data.map((item) => {
+    const mesIndex = parseInt(item.mes, 10) - 1;
+    const nombreMes = meses[mesIndex] || "Mes desconocido";
+    const nombreMesCorto = mesesCortos[mesIndex] || "Mes";
+
+    return window.innerWidth < 768
+      ? `${nombreMesCorto} ${item.anio.toString().slice(2)}`
+      : `Semana ${item.semana} (${nombreMes}) - ${item.anio}`;
   });
 
   const datasets = [];
@@ -83,6 +86,7 @@ export default function GraficoSemanal({ data }) {
     datasets,
   };
 
+
   const options = {
     responsive: true,
     plugins: {
@@ -92,12 +96,28 @@ export default function GraficoSemanal({ data }) {
       },
       tooltip: {
         callbacks: {
-          title: (tooltipItems) => etiquetas[tooltipItems[0].dataIndex], // Etiqueta con semana y mes
+          title: (tooltipItems) => etiquetas[tooltipItems[0].dataIndex],
           label: (tooltipItem) => `$${tooltipItem.raw.toLocaleString()}`,
         },
       },
     },
     scales: {
+      x: {
+        ticks: {
+          callback: (value, index) => {
+            if (window.innerWidth < 768) {
+              return etiquetas[index];
+            }
+            return etiquetas[index];
+          },
+          font: {
+            size: window.innerWidth < 768 ? 10 : 14,
+          },
+          maxRotation: 45,
+          minRotation: 0,
+          autoSkip: true,
+        },
+      },
       y: {
         ticks: {
           callback: (value) => `$${value.toLocaleString()}`,
@@ -110,9 +130,9 @@ export default function GraficoSemanal({ data }) {
     <div id={styles.graficoContainer}>
       {/* Contenedor del título y selector */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
-        <div style={{ width: "33%" }}></div>
-        <h3 style={{ width: "33%" }}>Ventas y Comisiones</h3>
-        <div className={styles.dateSelector} style={{ width: "33%" }}>
+        {/* <div id={styles.title}></div> */}
+        <h3 id={styles.title}>Ventas y Comisiones</h3>
+        <div className={styles.dateSelector}>
           <select value={tipoGrafico} onChange={(e) => setTipoGrafico(e.target.value)}>
             <option value="barras">Barras</option>
             <option value="lineas">Líneas</option>

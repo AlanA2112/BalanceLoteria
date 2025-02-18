@@ -6,6 +6,7 @@
     border-radius: 0.7rem;
     font-family: "Saira", serif;
     height: 100%;
+    position: relative;
 }
 
 input[type="checkbox"] {
@@ -17,9 +18,12 @@ input[type="checkbox"] {
     gap: 10px;
     align-items: center;
     justify-content: flex-end;
-    margin-right: 1rem;
+    /* margin-right: 1rem; */
     color: var(--gris);
     transition: 0.25s;
+    width: 15%;
+    position: absolute;
+    left: 80%;
 }
 
 .dateSelector select {
@@ -48,6 +52,10 @@ input[type="checkbox"] {
     display: none;
 }
 
+#title{
+    width: 100%;
+}
+
 @media (max-width: 768px) {
     #graficoContainer{
         width: 100%;
@@ -57,5 +65,9 @@ input[type="checkbox"] {
         border-radius: 0.7rem;
         font-family: "Saira", serif;
         height: 100%;
+    }
+
+    #title{
+        width: 65%;
     }
 }

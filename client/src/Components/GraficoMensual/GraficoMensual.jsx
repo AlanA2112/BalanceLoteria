@@ -79,9 +79,9 @@ export default function GraficoMensual({ data }) {
     <div id={styles.graficoContainer}>
       {/* Contenedor del título y selector */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
-        <div style={{width: "33%"}}></div>
-        <h3 style={{width: "33%"}}>Ventas y Comisiones</h3>
-        <div className={styles.dateSelector} style={{width: "33%"}}>
+        {/* <div id={styles.title}></div> */}
+        <h3 id={styles.title}>Ventas y Comisiones</h3>
+        <div className={styles.dateSelector}>
           <select value={tipoGrafico} onChange={(e) => setTipoGrafico(e.target.value)} >
             <option value="barras" className={styles.dateSelector}>Barras</option>
             <option value="lineas" className={styles.dateSelector}>Líneas</option>
