@@ -5,12 +5,8 @@ const router = Router();
 router.put('/edit/:id', async (req, res) => {
     try {
         console.log(req.body);
-        const { id } = req.params;  // Obtenemos el ID desde la URL
+        const { id } = req.params;  // Obtener el ID desde la URL
         const { dia, mes, anio, ventas, comision } = req.body;
-
-        if (!dia || !mes || !anio || ventas === undefined || comision === undefined) {
-            return res.status(400).json({ error: "Todos los campos son obligatorios" });
-        }
 
         // Buscar el resumen diario por ID
         const resumenExistente = await ResumenDiario.findByPk(id);
@@ -19,8 +15,21 @@ router.put('/edit/:id', async (req, res) => {
             return res.status(404).json({ error: "No se encontró un resumen con el ID especificado" });
         }
 
-        // Actualizar el registro con los nuevos valores
-        await resumenExistente.update({ dia, mes, anio, ventas, comision });
+        // Crear un objeto con solo los campos proporcionados
+        const datosActualizados = {};
+        if (dia !== undefined) datosActualizados.dia = dia;
+        if (mes !== undefined) datosActualizados.mes = mes;
+        if (anio !== undefined) datosActualizados.anio = anio;
+        if (ventas !== undefined) datosActualizados.ventas = ventas;
+        if (comision !== undefined) datosActualizados.comision = comision;
+
+        // Verificar si hay algo que actualizar
+        if (Object.keys(datosActualizados).length === 0) {
+            return res.status(400).json({ error: "No se enviaron datos para actualizar" });
+        }
+
+        // Actualizar solo los campos proporcionados
+        await resumenExistente.update(datosActualizados);
 
         console.log("Registro actualizado:", resumenExistente.toJSON());
 
