@@ -7,9 +7,9 @@ export default function ItemLista({ data }) {
     const dispatch = useDispatch();
     const [editableField, setEditableField] = useState(null);
     const [editValue, setEditValue] = useState("");
-    const [isPressing, setIsPressing] = useState(false); // Estado para manejar el "mantener presionado"
 
     function onDeleteHandler() {
+        // Aquí puedes mostrar información más relevante, como el 'dia' o 'ventas'
         const itemDetails = `${data.dia}/${data.mes}/${data.anio} - Ventas: $${Number(data.ventas).toLocaleString()} - Comisión: $${Number(data.comision).toLocaleString()}`;
         const isConfirmed = window.confirm(`¿Estás seguro de que quieres eliminar este elemento?\n\n${itemDetails}`);
         if (isConfirmed) {
@@ -20,39 +20,6 @@ export default function ItemLista({ data }) {
     function handleDoubleClick(field, value) {
         setEditableField(field);
         setEditValue(value);
-    }
-
-    function handlePressAndHold(field, value) {
-        // Lógica para manejar el mantener presionado
-        console.log(`Manteniendo presionado ${field}: ${value}`);
-        setEditableField(field); // Cambiar a modo edición si lo deseas
-        setEditValue(value);
-    }
-
-    function handleMouseDown(field, value) {
-        setIsPressing(true);
-        setTimeout(() => {
-            if (isPressing) {
-                handlePressAndHold(field, value);
-            }
-        }, 1000); // Activar después de 1 segundo de presionar
-    }
-
-    function handleMouseUp() {
-        setIsPressing(false);
-    }
-
-    function handleTouchStart(field, value) {
-        setIsPressing(true);
-        setTimeout(() => {
-            if (isPressing) {
-                handlePressAndHold(field, value);
-            }
-        }, 1000); // Activar después de 1 segundo de mantener
-    }
-
-    function handleTouchEnd() {
-        setIsPressing(false);
     }
 
     function handleChange(e) {
@@ -74,10 +41,6 @@ export default function ItemLista({ data }) {
                         key={field}
                         id={styles.itemFecha}
                         onDoubleClick={() => handleDoubleClick(field, data[field])}
-                        onMouseDown={() => handleMouseDown(field, data[field])} // Manejar mouse
-                        onMouseUp={handleMouseUp}
-                        onTouchStart={() => handleTouchStart(field, data[field])} // Manejar toque
-                        onTouchEnd={handleTouchEnd}
                     >
                         {editableField === field ? (
                             <input
@@ -100,10 +63,6 @@ export default function ItemLista({ data }) {
                         key={field}
                         id={styles.itemComision}
                         onDoubleClick={() => handleDoubleClick(field, data[field])}
-                        onMouseDown={() => handleMouseDown(field, data[field])} // Manejar mouse
-                        onMouseUp={handleMouseUp}
-                        onTouchStart={() => handleTouchStart(field, data[field])} // Manejar toque
-                        onTouchEnd={handleTouchEnd}
                     >
                         {editableField === field ? (
                             <input
