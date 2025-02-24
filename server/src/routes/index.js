@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const postResumenDiario = require("../controllers/postResumenDiario");
-const edirResumenDiario = require("../controllers/editResumenDiario");
+const editResumenDiario = require("../controllers/editResumenDiario");
 const getAllResumenDiario = require("../controllers/getAllResumenDiario");
 const getResumen = require("../controllers/getResumen");
 const deleteResumen = require("../controllers/deleteResumen");
