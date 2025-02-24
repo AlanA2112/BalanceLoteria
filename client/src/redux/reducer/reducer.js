@@ -1,4 +1,4 @@
-import { ADD_RESUMEN, DELETE, GET_ALL } from "../actions/actionsTypes";
+import { ADD_RESUMEN, DELETE, GET_ALL, UPDATE_RESUMEN } from "../actions/actionsTypes";
 
 const initialState = {
     listaResumenes: []
@@ -10,6 +10,14 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 listaResumenes: [...state.listaResumenes, action.payload] // Agregar nuevo resumen a la lista
+            };
+        case UPDATE_RESUMEN:
+            console.log(action.payload.data)
+            return {
+                ...state,
+                listaResumenes: state.listaResumenes.map((resumen) =>
+                    resumen.id === action.payload.data.id ? action.payload.data : resumen
+                ),
             };
         case DELETE:
             return {

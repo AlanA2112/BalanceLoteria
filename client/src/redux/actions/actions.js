@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_RESUMEN, DELETE, GET_ALL } from "./actionsTypes";
+import { ADD_RESUMEN, DELETE, GET_ALL, UPDATE_RESUMEN } from "./actionsTypes";
 
 const URL = "https://balance-production-13b3.up.railway.app/resumen";
 
@@ -14,6 +14,19 @@ export const addResumen = (resumen) => async dispatch => {
         console.log(e);
     }
 };
+
+export const updateResumen = (data) => async (dispatch) => {
+    try {
+        const response = await axios.put(`${URL}/edit/${data.id}`, data);
+        dispatch({
+            type: UPDATE_RESUMEN,
+            payload: response.data,  // Devuelve el resumen actualizado
+        });
+    } catch (error) {
+        console.error("Error al actualizar:", error);
+    }
+};
+
 
 
 export const getAll = () => async dispatch => {

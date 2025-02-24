@@ -3,8 +3,6 @@ import ItemLista from "../ItemLista/ItemLista";
 import styles from "./ListaMensual.module.css";
 
 export default function ListaMensual({ 
-    lista, 
-    setGroupedList, 
     monthNames, 
     handleSort, 
     handleSelectYear, 
@@ -12,7 +10,6 @@ export default function ListaMensual({
     handleNextMonth, 
     handlePrevMonth, 
     availableYears, 
-    sortedList, 
     currentIndex, 
     currentKey, 
     groupedByMonth, 
@@ -25,7 +22,7 @@ export default function ListaMensual({
     return (
         <div id={styles.lista}>
             <div id={styles.header}>
-                <button onClick={handlePrevMonth} disabled={currentIndex === 0}>&lt;</button>
+                <button onClick={handlePrevMonth} disabled={currentIndex === sortedKeys.length - 1}>&lt;</button>
 
                 {/* Selectores de mes y año */}
                 <div className={styles.dateSelector}>
@@ -42,7 +39,7 @@ export default function ListaMensual({
                     </select>
                 </div>
 
-                <button onClick={handleNextMonth} disabled={currentIndex === sortedKeys.length - 1}>&gt;</button>
+                <button onClick={handleNextMonth} disabled={currentIndex === 0}>&gt;</button>
             </div>
 
             <div id={styles.item}>

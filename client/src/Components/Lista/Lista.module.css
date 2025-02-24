@@ -95,6 +95,30 @@
     /* Espacio entre el texto y el icono */
 }
 
+/*/////////////////////////////////////////////////////////*/
+
+.inputEdit {
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    text-align: inherit;
+    border: none;
+    outline: none;
+    background: rgb(255, 255, 255, 0.1);
+    box-shadow: 0 0 2px 2px var(--celeste); /* Azul tenue */
+    border-radius: 5px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    color: inherit;
+}
+
+.inputEdit:focus {
+    outline: none;
+}
+
+
 @media (max-width: 768px) {
     #lista {
         background-color: var(--gris-oscuro);

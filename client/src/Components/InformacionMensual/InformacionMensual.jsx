@@ -5,7 +5,6 @@ import ListaMensual from "../ListaMensual/ListaMensual";
 import styles from "./Informacion.module.css";
 
 export default function InformacionMensual({ lista }) {
-
     const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
 
     useEffect(() => {
@@ -16,24 +15,23 @@ export default function InformacionMensual({ lista }) {
     const sortedList = [...lista].sort((a, b) => {
         if (!sortConfig.key) return 0;
         const isAsc = sortConfig.direction === "asc" ? 1 : -1;
-    
+
         if (sortConfig.key === "fecha") {
             const dateA = new Date(a.anio, a.mes - 1, a.dia);
             const dateB = new Date(b.anio, b.mes - 1, b.dia);
-    
+
             // Comparar las fechas de forma correcta (menor a mayor)
             if (dateA < dateB) {
-                return isAsc; // Si A es menor que B, devolver "asc" o "desc"
+                return isAsc;
             } else if (dateA > dateB) {
-                return -isAsc; // Si A es mayor que B, devolver el valor opuesto
+                return -isAsc;
             }
-            return 0; // Si son iguales
+            return 0;
         }
-    
-        // Si no es "fecha", ordenar por el valor de otra clave
+
         return (a[sortConfig.key] > b[sortConfig.key] ? 1 : -1) * isAsc;
     });
-    
+
     // Agrupar por mes y año
     const groupedByMonth = sortedList.reduce((acc, item) => {
         const key = `${item.anio}-${String(item.mes).padStart(2, "0")}`;
@@ -42,8 +40,8 @@ export default function InformacionMensual({ lista }) {
         return acc;
     }, {});
 
-    const sortedKeys = Object.keys(groupedByMonth).sort((a, b) => a.localeCompare(b));
-    const [currentIndex, setCurrentIndex] = useState(sortedKeys.length - 1);
+    const sortedKeys = Object.keys(groupedByMonth).sort((a, b) => b.localeCompare(a)); // Orden descendente
+    const [currentIndex, setCurrentIndex] = useState(sortedKeys.length);
 
     // Obtener el mes y año actual
     const currentKey = sortedKeys[currentIndex] || sortedKeys[0] || "0000-01";
@@ -57,11 +55,11 @@ export default function InformacionMensual({ lista }) {
     const availableYears = [...new Set(sortedKeys.map(k => k.split("-")[0]))];
 
     function handlePrevMonth() {
-        setCurrentIndex(prev => Math.max(prev - 1, 0));
+        setCurrentIndex(prev => Math.min(prev + 1, sortedKeys.length - 1));
     }
 
     function handleNextMonth() {
-        setCurrentIndex(prev => Math.min(prev + 1, sortedKeys.length - 1));
+        setCurrentIndex(prev => Math.max(prev - 1, 0));
     }
 
     function handleSelectMonth(event) {
@@ -84,7 +82,6 @@ export default function InformacionMensual({ lista }) {
         }));
     }
 
-
     return (
         <div id={styles.container}>
             <div id={styles.titleContainer}>Informacion Diaria</div>
@@ -98,5 +95,5 @@ export default function InformacionMensual({ lista }) {
                 <GraficoMensual data={groupedByMonth[currentKey] || []} />
             </div>
         </div>
-    )
+    );
 }
