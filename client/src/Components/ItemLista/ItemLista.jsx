@@ -50,6 +50,7 @@ export default function ItemLista({ data }) {
                                 onBlur={handleBlur}
                                 autoFocus
                                 className={styles.inputEdit}
+                                inputMode="numeric"
                             />
                         ) : (
                             String(data[field]).padStart(2, '0')
@@ -72,6 +73,7 @@ export default function ItemLista({ data }) {
                                 onBlur={handleBlur}
                                 autoFocus
                                 className={styles.inputEdit}
+                                inputMode="numeric"
                             />
                         ) : (
                             `$${Number(data[field]).toLocaleString()}`

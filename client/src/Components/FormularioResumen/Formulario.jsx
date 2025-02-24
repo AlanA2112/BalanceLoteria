@@ -92,6 +92,7 @@ export default function Formulario() {
                         onChange={(e) => onFormChangeHandler(e)}
                         onKeyDown={handleKeyDown} // Detectar Enter aquí
                         placeholder="Día"
+                        inputMode="numeric"
                     />
                     <input
                         id={styles.input}
@@ -102,6 +103,7 @@ export default function Formulario() {
                         onChange={(e) => onFormChangeHandler(e)}
                         onKeyDown={handleKeyDown} // Detectar Enter aquí
                         placeholder="Mes"
+                        inputMode="numeric"
                         ref={mesInputRef}
                     />
                     <input
@@ -113,6 +115,7 @@ export default function Formulario() {
                         onChange={(e) => onFormChangeHandler(e)}
                         onKeyDown={handleKeyDown} // Detectar Enter aquí
                         placeholder="Año"
+                        inputMode="numeric"
                         ref={anioInputRef}
                     />
                 </div>
@@ -131,6 +134,7 @@ export default function Formulario() {
                         onChange={(e) => onFormChangeHandler(e)}
                         onKeyDown={handleKeyDown} // Detectar Enter aquí
                         ref={ventasInputRef}
+                        inputMode="numeric"
                     />
                 </div>
             </div>
@@ -148,6 +152,7 @@ export default function Formulario() {
                         onChange={(e) => onFormChangeHandler(e)}
                         onKeyDown={handleKeyDown} // Detectar Enter aquí
                         ref={comisionInputRef}
+                        inputMode="numeric"
                     />
                 </div>
             </div>
