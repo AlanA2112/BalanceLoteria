@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const { ResumenDiario } = require("../db");  // Aquí accedemos a 'ResumenDiario' correctamente
 const router = Router();
+const vision = require('@google-cloud/vision');
 
 // Configurar Multer para subir archivos
 const upload = multer({ storage: multer.memoryStorage() });
