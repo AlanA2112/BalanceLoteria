@@ -110,22 +110,28 @@ export default function OCR() {
     }
 
 
-    const runOCR = (blob) => {
+    const runOCR = async (blob) => {
         setLoading(true);
-        Tesseract.recognize(blob, 'spa', {
-            logger: (m) => console.log(m),
-            tessedit_pageseg_mode: 0 // <-- Esto aplica el PSM 11
-        })
-            .then(({ data: { text } }) => {
-                setText(text);
-                extractInfo(text);
-                setLoading(false);
-            })
-            .catch((err) => {
-                console.error(err);
-                setLoading(false);
+
+        const formData = new FormData();
+        formData.append('image', blob, 'imagen.png');
+
+        try {
+            const response = await fetch('https://balance-production-13b3.up.railway.app/ocr', {
+                method: 'POST',
+                body: formData
             });
+
+            const data = await response.json();
+            setText(data.text);
+            extractInfo(data.text);
+        } catch (error) {
+            console.error('Error en OCR:', error);
+        } finally {
+            setLoading(false);
+        }
     };
+
 
     const extractInfo = (text) => {
         const fechaMatch = text.match(/\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4}/);
