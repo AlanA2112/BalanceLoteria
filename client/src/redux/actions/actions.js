@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ADD_RESUMEN, DELETE, GET_ALL, UPDATE_RESUMEN } from "./actionsTypes";
 
-const URL = "https://balance-production-13b3.up.railway.app/resumen";
+const URL = "https://balanceloteria-production.up.railway.app/resumen";
 
 export const addResumen = (resumen) => async dispatch => {
     try {
